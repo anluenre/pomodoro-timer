@@ -42,6 +42,8 @@ let startedAt   = 0;
 let startedWith = 0;
 let curImgIdx   = -1;
 let alarmVol    = 0.8;
+let shuffledQueue = [];
+let queueIndex = 0;
 
 const alarm = new Audio(SOUND_URL);
 alarm.preload = 'auto';
@@ -77,6 +79,17 @@ function pickOther(len, notIdx) {
   return i;
 }
 
+function reshuffleImages() {
+  shuffledQueue = [...IMAGES];
+
+  for (let i = shuffledQueue.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledQueue[i], shuffledQueue[j]] = [shuffledQueue[j], shuffledQueue[i]];
+  }
+
+  queueIndex = 0;
+}
+
 /* ── Image ───────────────────────────────────── */
 function showImage(idx) {
   heroImg.style.opacity = '0';
@@ -96,7 +109,15 @@ function showImage(idx) {
 }
 
 function shuffle() {
-  showImage(pickOther(IMAGES.length, curImgIdx));
+  if (shuffledQueue.length === 0 || queueIndex >= shuffledQueue.length) {
+    reshuffleImages();
+  }
+
+  const nextImage = shuffledQueue[queueIndex];
+  queueIndex++;
+
+  const idx = IMAGES.indexOf(nextImage);
+  showImage(idx);
 }
 
 /* ── Timer ───────────────────────────────────── */
@@ -229,6 +250,7 @@ function closeSettings() {
 
 /* ── Bootstrap ───────────────────────────────── */
 function init() {
+  reshuffleImages();
   shuffle();
   renderTimer();
   refreshDurUI();
