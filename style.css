@@ -285,26 +285,28 @@ body {
 @media (max-width: 520px) {
   body {
     padding: 16px;
+    align-items: stretch;
+    justify-content: flex-start;
   }
 
   .bg {
-    min-height: calc(100dvh - 32px);
-    padding: 0;
+    width: 100%;
+    min-height: calc(100svh - 32px);
     align-items: stretch;
   }
 
- .card {
-  width: 100%;
-  border-radius: 0;
-  min-height: 100%;
-  box-shadow: none;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 220px;
+  .card {
+    width: 100%;
+    min-height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
   .topbar {
-    padding: 0 0 10px;
+    padding: 0 0 16px;
   }
 
   .desktop-pills {
@@ -316,42 +318,62 @@ body {
     justify-content: space-between;
   }
 
- .mobile-pills {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  position: fixed;
-  left: 16px;
-  right: 16px;
-  bottom: calc(90px + env(safe-area-inset-bottom));
-  z-index: 100;
-}
-
-  .mobile-pills .pill {
-    width: 100%;
-  }
-
   .img-area {
-    min-height: auto;
     flex: 1;
-    padding: 8px 0 4px;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px 16px;
   }
 
   #heroImg {
-    width: 542px;
-    height: 542px;
+    width: min(100%, 300px);
+    height: auto;
+    max-height: 300px;
     aspect-ratio: 1 / 1;
-    max-width: 100%;
-    max-height: 100%;
+    object-fit: contain;
   }
 
   .timer {
     font-size: 62px;
-    padding: 8px 0 20px;
+    line-height: 1;
+    text-align: center;
+    padding: 0 0 24px;
+  }
+
+  .mobile-pills {
+    display: flex !important;
+    gap: 8px;
+    padding: 0 0 calc(16px + env(safe-area-inset-bottom));
+    flex-shrink: 0;
+  }
+
+  .mobile-pills .pill {
+    flex: 1;
+    width: 100%;
   }
 
   .dur-toggle {
     font-size: 24px;
+  }
+}
+
+/* Disable hover on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .pill:hover {
+    opacity: 1;
+    transform: none;
+  }
+
+  .pill.solid:hover {
+    background: #000;
+    color: #fff;
+  }
+
+  .pill.outline:hover {
+    background: transparent;
+    color: #000;
   }
 }
 
