@@ -1,68 +1,33 @@
 # Pomodoro Timer
 
-A minimal Pomodoro timer website. Built as plain HTML/CSS/JS — no build step, deploys directly to Vercel.
+A minimal, distraction-free Pomodoro timer designed to create a calm focus ritual.
 
-## Local setup
+The experience centers around a single visual object that can change through a shuffle interaction, adding subtle variation and elements of surprise.
 
-```bash
-# Serve locally (any static server works)
-npx serve .
-# or
-python3 -m http.server 8080
-```
+Why I built this?
 
-Then open `http://localhost:8080`.
+Most Pomodoro timers feel repetitive and purely functional. This project explores how a minimal interface and small visual changes can make focus feel more intentional, calm, and enjoyable.
 
-> **Do not open index.html directly as a file:// URL** — the browser will block audio and image loading. Always use a local server.
+# Features
+Minimal timer interface
+Shuffleable image system
+Adjustable timer presets
+Completion sound
+Responsive layout for desktop and mobile
 
-## Adding images
+# Tech
+HTML
+CSS
+JavaScript
 
-Place your `.webp` image files in `public/images/`. The filenames must match exactly what's listed at the top of `app.js`:
-
-```
-public/images/Image 1 - Tomato.webp
-public/images/Image 2 - Fig.webp
-...
-public/images/Imsge 23 - candy.webp   ← original filename has a typo, keep it
-```
-
-To swap an image: replace the file and update the matching entry in the `IMAGES` array in `app.js`.
-
-To add more images: drop the file in `public/images/` and add the filename to the `IMAGES` array.
-
-## Replacing the alarm sound
-
-The alarm loads from GitHub at runtime:
-
-```js
-// app.js line ~14
-const SOUND_URL = "https://raw.githubusercontent.com/anluenre/Pomodoro-timer/main/timer-finished.mp3";
-```
-
-To use a local file instead, place `timer-finished.mp3` in the project root and change the line to:
-
-```js
-const SOUND_URL = "./timer-finished.mp3";
-```
-
-## Deploy to Vercel
-
-1. Push this folder to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com) → **Add New Project** → import the repo.
-3. Framework Preset: **Other** (no framework).
-4. Leave all build settings blank — Vercel will serve `index.html` as-is.
-5. Click **Deploy**.
-
-No `vercel.json` needed for a pure static site.
-
-## Timer presets & settings
+# Timer presets & settings
 
 - Click **···** (top-right) to open the settings sheet.
 - Adjust the three preset durations (1–99 min each) using the **−/+** steppers.
 - Drag the volume slider to set alarm loudness.
 - The **▾** dropdown (top-right) picks which preset the timer uses.
 
-## Keyboard shortcuts
+# Keyboard shortcuts
 
 | Key   | Action           |
 |-------|------------------|
