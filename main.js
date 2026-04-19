@@ -1,7 +1,7 @@
 'use strict';
 
 /* ── Image manifest ──────────────────────────── */
-const IMG_BASE = "https://raw.githubusercontent.com/anluenre/Pomodoro-timer/main/public/images/";
+const IMG_BASE = "/images/";
 
 const IMAGES = [
   "Image 1 - Tomato.webp",
@@ -29,8 +29,7 @@ const IMAGES = [
   "Imsge 23 - candy.webp",
 ];
 
-const SOUND_URL =
-  "https://raw.githubusercontent.com/anluenre/Pomodoro-timer/main/timer-finished.mp3";
+const SOUND_URL = "/sounds/timer-finished.mp3";
 
 /* ── State ───────────────────────────────────── */
 let presets     = [5, 10, 20, 30];   // minutes per preset slot
