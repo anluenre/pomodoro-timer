@@ -182,10 +182,17 @@ function refreshDurUI() {
 
 function selectPreset(idx) {
   selectedIdx = idx;
-  if (timerState === 'idle' || timerState === 'finished') {
-    secsLeft = presets[idx] * 60;
-    renderTimer();
-  }
+
+  clearInterval(intervalId);
+  intervalId = null;
+
+  alarm.pause();
+  alarm.currentTime = 0;
+
+  secsLeft = presets[idx] * 60;
+  renderTimer();
+
+  setCardState('idle');
   refreshDurUI();
   closeDurMenu();
 }
