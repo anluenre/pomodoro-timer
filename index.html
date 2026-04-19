@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg">
+    <div class="card" id="card" data-state="idle">
+
+      <!-- Top bar -->
+      <div class="topbar">
+        <!-- Desktop: Shuffle + action (top-left) -->
+        <div class="desktop-pills">
+          <button class="pill outline btn-shuffle">Shuffle</button>
+          <button class="pill solid btn-action">Start</button>
+        </div>
+
+        <!-- Right: settings icon + duration selector -->
+        <div class="right-controls">
+          <button class="dots-btn" id="settingsBtn" aria-label="Open settings">
+            <svg width="24" height="7" viewBox="0 0 24 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6.11914 6.92285H0V0H6.11914V6.92285ZM15.0605 6.92285H8.94238V0H15.0605V6.92285ZM24.001 6.92285H17.8818V0H24.001V6.92285Z" fill="currentColor"/>
+            </svg>
+          </button>
+          <div class="dur-wrap">
+            <button class="dur-toggle" id="durToggle" aria-haspopup="true" aria-expanded="false">
+              <span id="durLabel">5m</span>
+              <svg width="8" height="8" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6.0202 12L0 0H12L6.0202 12Z" fill="currentColor"/>
+              </svg>
+            </button>
+            <div class="dur-menu" id="durMenu" role="menu">
+              <button class="dur-opt" data-idx="0" role="menuitem">5m</button>
+              <button class="dur-opt" data-idx="1" role="menuitem">10m</button>
+              <button class="dur-opt" data-idx="2" role="menuitem">20m</button>
+              <button class="dur-opt" data-idx="3" role="menuitem">30m</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image -->
+      <div class="img-area">
+        <img id="heroImg" src="" alt="" draggable="false" />
+      </div>
+
+      <!-- Countdown -->
+      <p class="timer" id="timer">05:00</p>
+
+      <!-- Mobile: Shuffle + action (bottom) -->
+      <div class="mobile-pills">
+        <button class="pill outline btn-shuffle">Shuffle</button>
+        <button class="pill solid btn-action">Start</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Compact native-style settings panel -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="settings-panel" id="settingsPanel" role="dialog" aria-label="Timer Settings">
+
+      <p class="panel-label">timer presets (min):</p>
+      <div class="preset-row">
+        <input type="number" class="preset-input" id="p0" value="5"  min="1" max="99" />
+        <input type="number" class="preset-input" id="p1" value="10" min="1" max="99" />
+        <input type="number" class="preset-input" id="p2" value="20" min="1" max="99" />
+        <input type="number" class="preset-input" id="p3" value="30" min="1" max="99" />
+      </div>
+
+      <div class="panel-divider"></div>
+
+      <p class="panel-label">alarm volume:</p>
+      <div class="vol-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="vol-icon" aria-hidden="true">
+          <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+        </svg>
+        <input type="range" class="vol-slider" id="volSlider" min="0" max="100" value="80" aria-label="Alarm volume" />
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="vol-icon" aria-hidden="true">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+      </div>
+
+      <button class="done-btn" id="doneBtn">Done</button>
+
+      <label class="mute-row" id="muteRow">
+        <span class="toggle" id="autoMuteToggle" role="switch" aria-checked="true" tabindex="0">
+          <span class="toggle-knob"></span>
+        </span>
+        <span class="mute-label">automatically mute after 5 seconds</span>
+      </label>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
