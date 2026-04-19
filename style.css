@@ -293,14 +293,14 @@ body {
     align-items: stretch;
   }
 
-  .card {
-    width: 100%;
-    border-radius: 0;
-    min-height: 100%;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 120px;
+ .card {
+  width: 100%;
+  border-radius: 0;
+  min-height: 100%;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 220px;
   }
 
   .topbar {
@@ -316,16 +316,16 @@ body {
     justify-content: space-between;
   }
 
-  .mobile-pills {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    position: fixed;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    z-index: 100;
-  }
+ .mobile-pills {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(90px + env(safe-area-inset-bottom));
+  z-index: 100;
+}
 
   .mobile-pills .pill {
     width: 100%;
