@@ -567,16 +567,29 @@ body {
 .done-btn {
   display: block;
   width: 100%;
-  margin-top: 16px;
-  padding: 11px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 10px;
+  margin-top: 18px;
+  padding: 16px;
+
+  background: #000;
+  border: 1px solid transparent;
+  border-radius: 80px;
+
   color: #fff;
-  font: 500 14px/1 var(--font);
+
+  font-family: var(--font);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: normal;
+
   cursor: pointer;
-  transition: background 0.15s;
+  transition: opacity 0.15s, transform 0.1s;
 }
 
-.done-btn:hover  { background: rgba(255, 255, 255, 0.16); }
-.done-btn:active { background: rgba(255, 255, 255, 0.08); }
+.done-btn:hover {
+  opacity: 0.7;
+}
+
+.done-btn:active {
+  opacity: 0.5;
+  transform: scale(0.96);
+}
