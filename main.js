@@ -80,13 +80,18 @@ function pickOther(len, notIdx) {
 /* ── Image ───────────────────────────────────── */
 function showImage(idx) {
   heroImg.style.opacity = '0';
-  heroImg.src = IMG_BASE + encodeURIComponent(IMAGES[idx]);
-  heroImg.onload = () => {
-    heroImg.style.opacity = '1';
+
+  const img = new Image();
+  img.src = IMG_BASE + encodeURIComponent(IMAGES[idx]);
+
+  img.onload = () => {
+    heroImg.src = img.src;
+
+    requestAnimationFrame(() => {
+      heroImg.style.opacity = '1';
+    });
   };
-  heroImg.onerror = () => {
-    heroImg.style.opacity = '0';
-  };
+
   curImgIdx = idx;
 }
 
