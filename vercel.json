@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/images/:path*", "destination": "/public/images/:path*" },
-    { "source": "/sounds/:path*", "destination": "/public/sounds/:path*" },
-    { "source": "/fonts/:path*", "destination": "/public/fonts/:path*" }
-  ]
-}
