@@ -296,11 +296,16 @@ function init() {
     presets[i] = v;
   });
 
-  if (timerState === 'idle' || timerState === 'finished') {
-    secsLeft = presets[selectedIdx] * 60;
-    renderTimer();
-  }
+  clearInterval(intervalId);
+  intervalId = null;
 
+  alarm.pause();
+  alarm.currentTime = 0;
+
+  secsLeft = presets[selectedIdx] * 60;
+  renderTimer();
+
+  setCardState('idle');
   refreshDurUI();
   closeSettings();
 });
