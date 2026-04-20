@@ -114,7 +114,7 @@ body {
 .right-controls {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
 
 .dots-btn {
@@ -303,14 +303,14 @@ body {
   }
 
   .card {
-    width: 100%;
-    min-height: 100%;
-    border-radius: 0;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+  width: 100%;
+  min-height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
   .topbar {
     padding: 0 0 0px;
@@ -331,30 +331,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0 0;
+  padding: 0;
 }
 
-  #heroImg {
-    width: min(100%, 300px);
-    height: auto;
-    max-height: 360px;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-  }
+.hero-stack {
+  width: min(100%, 300px);
+  height: 300px;
+  max-height: 360px;
+}
 
-  .timer {
-    font-size: 62px;
-    line-height: 1;
-    text-align: center;
-    padding: 0 0 100px;
-  }
+ .timer {
+  font-size: 62px;
+  line-height: 1;
+  text-align: center;
+  padding: 0 0 24px;
+  flex-shrink: 0;
+}
 
-  .mobile-pills {
-    display: flex !important;
-    gap: 8px;
-    padding: 0 0 calc(16px + env(safe-area-inset-bottom));
-    flex-shrink: 0;
-  }
+.mobile-pills {
+  display: flex !important;
+  gap: 8px;
+  margin-top: auto;
+  padding: 0 0 calc(16px + env(safe-area-inset-bottom));
+  flex-shrink: 0;
+}
 
   .mobile-pills .pill {
     flex: 1;
