@@ -49,6 +49,25 @@ const alarm = new Audio(SOUND_URL);
 alarm.preload = 'auto';
 alarm.addEventListener('ended', resetTimer);
 
+/* ────── alarm activation ─────────────────────────────────────*/
+let audioUnlocked = false;
+
+function unlockAudio() {
+  if (audioUnlocked) return;
+
+  alarm.volume = 0;
+  alarm.currentTime = 0;
+
+  alarm.play()
+    .then(() => {
+      alarm.pause();
+      alarm.currentTime = 0;
+      alarm.volume = alarmVol;
+      audioUnlocked = true;
+    })
+    .catch(() => {});
+}
+
 /* ── DOM refs ────────────────────────────────── */
 const $ = id => document.getElementById(id);
 
@@ -252,10 +271,24 @@ function init() {
   refreshDurUI();
   setCardState('idle');
 
-  shuffleBtns.forEach(btn => btn.addEventListener('click', shuffle));
-  actionBtns.forEach(btn => btn.addEventListener('click', handleAction));
+  shuffleBtns.forEach(btn =>
+  btn.addEventListener('click', () => {
+    unlockAudio();
+    shuffle();
+  })
+);
 
-  settingsBtn.addEventListener('click', openSettings);
+actionBtns.forEach(btn =>
+  btn.addEventListener('click', () => {
+    unlockAudio();
+    handleAction();
+  })
+);
+
+  settingsBtn.addEventListener('click', () => {
+  unlockAudio();
+  openSettings();
+});
   overlay.addEventListener('click', e => {
     if (e.target === overlay) closeSettings();
   });
