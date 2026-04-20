@@ -102,6 +102,20 @@ function reshuffleImages() {
 /* ── Image ───────────────────────────────────── */
 function showImage(idx) {
   const nextSrc = IMG_BASE + encodeURIComponent(IMAGES[idx]);
+  const isMobile = window.matchMedia('(max-width: 520px)').matches;
+
+  if (isMobile) {
+    const img = new Image();
+    img.src = nextSrc;
+
+    img.onload = () => {
+      heroImg.src = nextSrc;
+      heroImg.style.opacity = '1';
+    };
+
+    curImgIdx = idx;
+    return;
+  }
 
   heroImg.style.opacity = '0';
 
