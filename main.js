@@ -52,24 +52,12 @@ alarm.addEventListener('ended', resetTimer);
 /* ────── alarm activation ─────────────────────────────────────*/
 let audioUnlocked = false;
 
-function unlockAudio() {
-  if (audioUnlocked) return;
-
-  const previousVolume = alarmVol;
-
-  alarm.volume = 0;
+function playAlarm() {
+  alarm.pause();
   alarm.currentTime = 0;
-
-  alarm.play()
-    .then(() => {
-      alarm.pause();
-      alarm.currentTime = 0;
-      alarm.volume = previousVolume;
-      audioUnlocked = true;
-    })
-    .catch(() => {
-      alarm.volume = previousVolume;
-    });
+  alarm.muted = false;
+  alarm.volume = alarmVol;
+  alarm.play().catch(() => {});
 }
 
 /* ── DOM refs ────────────────────────────────── */
