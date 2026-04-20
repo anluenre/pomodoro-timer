@@ -55,6 +55,8 @@ let audioUnlocked = false;
 function unlockAudio() {
   if (audioUnlocked) return;
 
+  const previousVolume = alarmVol;
+
   alarm.volume = 0;
   alarm.currentTime = 0;
 
@@ -62,10 +64,12 @@ function unlockAudio() {
     .then(() => {
       alarm.pause();
       alarm.currentTime = 0;
-      alarm.volume = alarmVol;
+      alarm.volume = previousVolume;
       audioUnlocked = true;
     })
-    .catch(() => {});
+    .catch(() => {
+      alarm.volume = previousVolume;
+    });
 }
 
 /* ── DOM refs ────────────────────────────────── */
@@ -207,8 +211,9 @@ function handleAction() {
 }
 
 function playAlarm() {
-  alarm.volume = alarmVol;
+  alarm.pause();
   alarm.currentTime = 0;
+  alarm.volume = alarmVol;
   alarm.play().catch(() => {});
 }
 
@@ -253,7 +258,10 @@ function openSettings() {
   presetInputs.forEach((input, i) => {
     input.value = presets[i];
   });
+
+  volSlider.value = String(alarmVol * 100);
   volSlider.style.setProperty('--value', volSlider.value + '%');
+
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden', 'false');
 }
